@@ -25,13 +25,13 @@ else
 			;;
 		--title)
 			shift
-			title="${1}"
+			jtitle="${1}"
 			shift
 			;;
 		--body)
 			shift
-			body="${@}"
-			shift
+			jbody="$*"
+			break
 			;;
 		*) shift ;;
 		esac
@@ -40,7 +40,10 @@ else
 		jtitle="Notification!"
 	fi
 	if [ -z "${jbody}" ];then
-		jbody=" "
+		jbody=$(cat)
+		if [ -z "${jbody}" ];then
+			jbody=" "
+		fi
 	fi
 	loud "[info] Posting reply to maubot"
 #   Build the JSON safely with jq
