@@ -3,7 +3,6 @@
 export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 export INSTALL_DIR="$(dirname "$(readlink -f "$0")")"
 source "${SCRIPT_DIR}/maubot_vars.env"
-LOUD=1
 
 function loud() {
     if [ "${LOUD:-0}" -eq 1 ];then
