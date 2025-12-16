@@ -50,7 +50,7 @@ else
 	json_payload=$(jq -n --arg title "${jtitle}" --arg body "${jbody}" '{ title: $title,body: $body}')
 
 	# Then send it with curl
-	curl -X POST -H "Content-Type: application/json" -u abc:123 "${MATRIXSERVER}/_matrix/maubot/plugin/${MAUBOT_STATUS_WEBHOOK_INSTANCE}/send" -d "$json_payload"
+	curl -X POST -H "Content-Type: application/json" "${MATRIXSERVER}/_matrix/maubot/plugin/${MAUBOT_STATUS_WEBHOOK_INSTANCE}/send" -d "$json_payload"
 	loud "[info] Posted to maubot"  
 
 fi
