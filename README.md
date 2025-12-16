@@ -90,6 +90,22 @@ This payload is POSTed to:
 ${MATRIXSERVER}/_matrix/maubot/plugin/${MAUBOT_STATUS_WEBHOOK_INSTANCE}/send
 ```
 
+Maubot's configuration should be similar to this:
+
+```
+path: /send
+method: POST
+room: '!RoomIDtoPostIn'
+message: |-
+    {{ json.title }} : {{ json.body }}
+message_format: markdown
+message_type: m.notice
+auth_type:
+auth_token:
+force_json: false
+ignore_empty_messages: false
+```
+
 ## Behavior Notes
 
 * JSON is constructed using `jq -n --arg` to avoid shell escaping issues.
